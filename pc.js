@@ -1,3 +1,28 @@
+var xyList = ["year", "power"]
+    let output = document.getElementById('output');
+      function selectOption() {
+         let dropdown = document.getElementById('dropdown');
+         // get the index of the selected option
+         let selectedIndex = dropdown.selectedIndex;
+         // get a selected option and text value using the text property
+         let selectedValue = dropdown.options[selectedIndex].text;
+         output.innerHTML = "The selected value for x-axis is " + selectedValue;
+         xyList[0] = selectedValue
+         drawSPlot(xyList[0], xyList[1]);
+      }
+      
+    let output2 = document.getElementById('output2');
+      function selectOption2() {
+         let dropdown2 = document.getElementById('dropdown2');
+         // get the index of the selected option
+         let selectedIndex2 = dropdown2.selectedIndex;
+         // get a selected option and text value using the text property
+         let selectedValue2 = dropdown2.options[selectedIndex2].text;
+         output2.innerHTML = "The selected value for y-axis is " + selectedValue2;
+         xyList[1] = selectedValue2
+         drawSPlot(xyList[0], xyList[1]);
+      }
+
 //define the svg area
 var margin = {top: 30, right: 10, bottom: 10, left: 10},
     width = 1200 - margin.left - margin.right,
