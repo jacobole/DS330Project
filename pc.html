@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+svg {
+  font: 10px sans-serif;
+}
+
+.polyline path {
+  fill: none;
+  stroke: #666;
+  shape-rendering: crispEdges;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+  cursor: move;
+}
+
+.xaxis text {
+  font: 10px sans-serif;
+}
+.yaxis text {
+  font: 10px sans-serif;
+}
+
+.xaxis path,
+.xaxis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.yaxis path,
+.yaxis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+
+</style>
+<body>
+<svg class="chart"></svg>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src = "pc.js">  </script>
+
+<!-- html for the dropdown menus -->
+<br>
+   <txt>Please choose two dimensions for the scatterplot:</txt>
+   <br>
+   <txt>x-axis:</txt>
+   <br>
+   <select id = "dropdown" onchange = "selectOption()">
+      <option>year</option>
+      <option>cylinders</option>
+      <option>displacement</option>
+      <option>power</option>
+      <option>weight</option>
+      <option>acceleration</option>
+      <option>economy</option>
+   </select>
+   
+   <br>
+   <txt>y-axis:</txt>
+   <br>
+   <select id = "dropdown2" onchange = "selectOption2()">
+      <option>power</option>
+      <option>cylinders</option>
+      <option>displacement</option>
+      <option>economy</option>
+      <option>weight</option>
+      <option>acceleration</option>
+      <option>year</option>
+   </select>
+   <br><br>
+   <div id = "output">The selected value for x-axis is year.</div>
+   <div id = "output2">The selected value for y-axis is power.</div>
+   
+<script>
+//javascript code to make the dropdown menus work, and to redraw the scatterplot when something is selected
+var xyList = ["year", "power"]
+    let output = document.getElementById('output');
+      function selectOption() {
+         let dropdown = document.getElementById('dropdown');
+         // get the index of the selected option
+         let selectedIndex = dropdown.selectedIndex;
+         // get a selected option and text value using the text property
+         let selectedValue = dropdown.options[selectedIndex].text;
+         output.innerHTML = "The selected value for x-axis is " + selectedValue;
+         xyList[0] = selectedValue
+         drawSPlot(xyList[0], xyList[1]);
+      }
+      
+    let output2 = document.getElementById('output2');
+      function selectOption2() {
+         let dropdown2 = document.getElementById('dropdown2');
+         // get the index of the selected option
+         let selectedIndex2 = dropdown2.selectedIndex;
+         // get a selected option and text value using the text property
+         let selectedValue2 = dropdown2.options[selectedIndex2].text;
+         output2.innerHTML = "The selected value for y-axis is " + selectedValue2;
+         xyList[1] = selectedValue2
+         drawSPlot(xyList[0], xyList[1]);
+      }
+</script>
+   
+</body>
+</html>
